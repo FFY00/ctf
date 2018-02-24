@@ -25,8 +25,9 @@ while "type=dead" not in r2.cmd("di"):
     ebx = r2.cmd("dr eax")
     try:
         val = int(ebx, 0) + 0x61
-        print fg(130) + "EBX (" + ebx + ") + 0x61 =", val, "(" + chr(val) + ")" + fg(240)
-        key += chr(val)
+        char = chr(val)
+        print fg(130) + "EBX (" + ebx + ") + 0x61 =", val, "(" + char + ")" + fg(240)
+        key += char
     except ValueError:
         pass
     i += 1
