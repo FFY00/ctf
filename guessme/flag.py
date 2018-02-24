@@ -23,14 +23,16 @@ while "type=dead" not in r2.cmd("di"):
     r2.cmd("dr ebx=" + eax)
     print fg(228) + "EBX set to", eax + fg(240)
     ebx = r2.cmd("dr eax")
-    print fg(154) + "EBX:", ebx + fg(240)
     try:
-         key += chr(int(ebx, 0) + 0x61)
+        val = int(ebx, 0) + 0x61
+        print fg(130) + "EBX (" + ebx + ") + 0x61 =", val, "(" + chr(val) + ")" + fg(240)
+        key += chr(val)
     except ValueError:
         pass
     i += 1
     dc = r2.cmd("dc")
 
+print "\n"
 print fg(46) + "KEY={" + key + "}" + fg(240)
 print fg(202) + attr("bold") + "\n" + "===== TESTING =====" + "\n" + attr(0)
 print fg(245) + "./guessme", key + attr(0)
